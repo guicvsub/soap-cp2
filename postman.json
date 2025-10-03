@@ -1,0 +1,123 @@
+{
+  "info": {
+    "name": "Checkpoint2 - OrderController",
+    "_postman_id": "a3d2c9f4-5678-4321-90ab-d1234567890f",
+    "description": "Collection para testar os endpoints do OrderController (porta 8085)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Criar Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clientName\": \"João Silva\",\n  \"orderDate\": \"2025-10-03\",\n  \"totalValue\": 1500.75\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8085/orders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar Orders",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8085/orders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar Order por ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8085/orders/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "orders",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar Order",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clientName\": \"Maria Oliveira\",\n  \"orderDate\": \"2025-10-04\",\n  \"totalValue\": 2500.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8085/orders/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "orders",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deletar Order",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8085/orders/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "orders",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

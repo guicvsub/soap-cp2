@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -33,7 +32,8 @@ public List<OrderModel> readOrders(){
         return orderService.readAllOrders();
     }
     @GetMapping("/{code}")
-    public ResponseEntity<Object> getOrder(@PathVariable Long id ) {
+
+    public ResponseEntity<Object> getOrder(@PathVariable("code") Long id) {
         try {
 
             OrderModel orderModel = orderService.readOrderById(id);
@@ -44,13 +44,24 @@ public List<OrderModel> readOrders(){
         }
     }
     @PutMapping("/{code}")
-    public ResponseEntity<Object> updateOrder(@PathVariable Long id, @Valid @RequestBody OrderModel order) {
+    public ResponseEntity<Object> updateOrder(@PathVariable("code") Long id, @Valid @RequestBody OrderModel order) {
         try {
             OrderModel orderModel = orderService.updateOrder(id, order);
             return new ResponseEntity<>(orderModel, HttpStatus.OK);
 
         }
         catch (EntityNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+
+        }
+    }
+    @DeleteMapping("/{code}")
+    public ResponseEntity<Object> deleteOrder(@PathVariable("code") Long id) {
+        try {
+            orderService.deleteOrderById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        } catch (EntityNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 
         }

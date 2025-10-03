@@ -17,6 +17,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Setter
 @Getter
+@Table(name= "Pedidos")
+
 public class OrderModel {
 
     @Id
@@ -27,15 +29,16 @@ public class OrderModel {
     private LocalDate orderDate;
     private BigDecimal totalValue;
 
+
     @PrePersist
     public void prePersist() {
         if (orderDate == null) {
-            LocalDate orderDate = LocalDate.now();
-
+            this.orderDate = LocalDate.now();
         }
-
     }
 
 }
+
+
 
 
