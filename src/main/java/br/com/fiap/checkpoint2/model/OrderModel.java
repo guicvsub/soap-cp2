@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class OrderModel {
     @NotEmpty(message = "preenchimento do nome é obrigatório")
     private String clientName;
     private LocalDate orderDate;
+    @PositiveOrZero(message = "O valor total não pode ser negativo")
     private BigDecimal totalValue;
 
 

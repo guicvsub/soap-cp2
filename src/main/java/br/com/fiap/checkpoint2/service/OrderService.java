@@ -61,21 +61,3 @@ public class OrderService {
 }
 
 
-/*public OrderModel updateOrder(Long id, OrderModel order) {
-    // Tenta encontrar a entidade. Se presente, executa o map.
-    return orderRepository.findById(id)
-            .map(existingOrder -> {
-                // Atualiza os atributos da entidade existente (managed by JPA)
-                // Usando os setters que o Lombok gerou para clientName e totalValue.
-
-                existingOrder.setClientName(order.getClientName()); // usa setClientName() do existingOrder
-                existingOrder.setTotalValue(order.getTotalValue()); // usa setTotalValue() do existingOrder
-
-                // Salva a entidade modificada e a retorna.
-                return orderRepository.save(existingOrder);
-            })
-            // Se o Optional estiver vazio, lança a exceção EntityNotFoundException
-            .orElseThrow(() ->
-                    new EntityNotFoundException("Pedido com o ID " + id + " não foi encontrado.")
-            );
-}*/
