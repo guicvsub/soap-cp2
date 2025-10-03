@@ -3,12 +3,16 @@ package br.com.fiap.checkpoint2.service;
 import br.com.fiap.checkpoint2.model.OrderModel;
 import br.com.fiap.checkpoint2.repository.OrderRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
-
+@Service
 public class OrderService {
+    @Autowired
     private OrderRepository orderRepository;
 
 
@@ -40,6 +44,17 @@ public class OrderService {
                 })
 
                 .orElseThrow(() -> new EntityNotFoundException("Pedido com o ID " + id + " não foi encontrado."));
+    }
+
+    public void deleteOrderById(Long id) {
+
+        try {
+            orderRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new EntityNotFoundException("Pedido com id " + id + " não foi encontrado.");
+
+        }
+
     }
 
 
