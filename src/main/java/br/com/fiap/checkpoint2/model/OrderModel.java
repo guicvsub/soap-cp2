@@ -28,7 +28,8 @@ public class OrderModel {
     @NotEmpty(message = "preenchimento do nome é obrigatório")
     private String clientName;
     private LocalDate orderDate;
-    @PositiveOrZero(message = "O valor total não pode ser negativo")
+    @DecimalMin(value = "0.0")
+    @Positive(message = "O valor total não pode ser negativo")
     private BigDecimal totalValue;
 
 
