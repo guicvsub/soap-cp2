@@ -30,7 +30,7 @@ public class OrderModel {
     private LocalDate orderDate;
     //@Positive(message = "o numero so pode ser positivo") //esta linha esta representada na linha 35 equivalente a passo 21
     //@DecimalMin(value = "0.0") // prof eu acho que nao precisa dessa linha (mais ta no roteiro) equivalente a passo 20
-    // porque a notacao @Positive garante que nao seja zero,  enquanto a linha 31 garante o zero
+    // porque a notacao @Positive garante que nao seja zero (porque zero nao e positivo),  enquanto a linha 32 garante o zero
     // nesse caso a melhor opcao e @PossitiveOrZero ai ta de boa
     @PositiveOrZero(message = "O valor total não pode ser negativo")
     private BigDecimal totalValue;
