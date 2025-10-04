@@ -28,10 +28,13 @@ public class OrderModel {
     @NotEmpty(message = "preenchimento do nome é obrigatório")
     private String clientName;
     private LocalDate orderDate;
-    //@Positive(message = "o numero so pode ser positivo") //esta linha esta representada na linha 35 equivalente a passo 21
-    //@DecimalMin(value = "0.0") // prof eu acho que nao precisa dessa linha (mais ta no roteiro) equivalente a passo 20
-    // porque a notacao @Positive garante que nao seja zero (porque zero nao e positivo),  enquanto a linha 32 garante o zero
-    // nesse caso a melhor opcao e @PossitiveOrZero ai ta de boa
+    //@Positive(message = "O número só pode ser positivo") // Equivalente ao passo 21 do roteiro
+//@DecimalMin(value = "0.0") // Equivalente ao passo 20 do roteiro
+// Observação: @Positive já impede o valor zero (pois zero não é positivo),
+// enquanto @DecimalMin(value = "0.0") permite o zero.
+// Portanto, usar as duas juntas acaba sendo redundante.
+// A melhor opção neste caso é usar apenas @PositiveOrZero,
+// que expressa de forma simples que o valor pode ser zero ou positivo.
     @PositiveOrZero(message = "O valor total não pode ser negativo")
     private BigDecimal totalValue;
 
